@@ -1,0 +1,6 @@
+{
+  "name": "Swojskie Wyroby - Tradycyjne Wędliny",
+  "description": "Rzemieślnicze wędliny tradycyjnie wędzone drewnem olchowo-owocowym. Prawdziwy smak polskiej wsi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

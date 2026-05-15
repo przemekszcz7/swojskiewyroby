@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F4EDE0;
+  --color-bg-section: #EDE3D2;
+  --color-bg-dark: #2A1F14;
+  --color-bg-darker: #1A1108;
+  --color-brown: #7B4A2D;
+  --color-brown-deep: #4E2E18;
+  --color-amber: #C8832A;
+  --color-amber-light: #E8B96A;
+  --color-red: #8B2E2E;
+  --color-green: #4A6741;
+  --color-text: #2A1F14;
+  --color-text-muted: #7A6555;
+  --color-text-light: #F4EDE0;
+  --color-white: #FDFAF5;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Lora", serif;
+  --font-mono: "Courier Prime", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-body antialiased selection:bg-amber-light/30;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-brown-deep;
+  }
+}
+
+@layer utilities {
+  /* Wood Plank Texture */
+  .wood-texture {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+
+  /* Linen Texture */
+  .linen-texture {
+    position: relative;
+  }
+  .linen-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(42, 31, 20, 0.03) 0px, rgba(42, 31, 20, 0.03) 1px, transparent 1px, transparent 2px),
+      repeating-linear-gradient(-45deg, rgba(42, 31, 20, 0.03) 0px, rgba(42, 31, 20, 0.03) 1px, transparent 1px, transparent 2px);
+    z-index: 0;
+  }
+
+  /* Smoke Wisp Animation */
+  @keyframes smoke {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.2; }
+    100% { transform: translateY(-100px) rotate(10deg); opacity: 0; }
+  }
+
+  .smoke-wisp {
+    animation: smoke 8s infinite linear;
+  }
+
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-[0.15em] text-amber mb-4 block;
+  }
+
+  /* Rope Divider */
+  .rope-divider {
+    @apply h-1 w-full;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-amber) 0px,
+      var(--color-amber) 4px,
+      var(--color-brown) 4px,
+      var(--color-brown) 8px
+    );
+    opacity: 0.3;
+  }
+
+  /* Scrolling Gallery */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+}
+
+.rustic-card {
+  @apply bg-white rounded-xl border-t-2 border-amber shadow-[0_8px_30px_rgb(123,74,45,0.08)] relative overflow-hidden;
+}
+
+.stamp-seal {
+  @apply border-2 border-red text-red rounded-full px-4 py-2 inline-block font-mono text-[10px] font-bold uppercase rotate-[-12deg] border-dashed scale-125;
+}
